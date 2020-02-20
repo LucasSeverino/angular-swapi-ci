@@ -18,7 +18,7 @@ cache:
     - node_modules
 
 script: 
-  -ng build --prod
+  - ng build --prod
 
 deploy: 
   provider: pages
