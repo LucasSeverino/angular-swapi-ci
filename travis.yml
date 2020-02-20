@@ -1,1 +1,29 @@
 language: node_js
+node_js: 
+  - "10.16.3"
+
+branches: 
+  only: 
+    - master
+
+addons: 
+  chrome: stable
+
+before_script: 
+  - yarn global add @angular/cli
+
+cache: 
+  yarn: true
+  directories: 
+    - node_modules
+
+script: 
+  -ng build --prod
+
+deploy: 
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep_history: true
+  local-dir: ./dist/
+  on:
