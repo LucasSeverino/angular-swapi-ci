@@ -20,6 +20,7 @@ cache:
 script: 
   - ng build --prod
 
+
 deploy: 
   provider: pages
   skip-cleanup: true
@@ -27,4 +28,4 @@ deploy:
   keep_history: true
   local-dir: ./dist/
   on:
-  
+ 
