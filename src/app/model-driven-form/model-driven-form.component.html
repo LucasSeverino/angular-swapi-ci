@@ -1,0 +1,15 @@
+<form [formGroup]="form" (submit)="submitForm()">
+    <label>Name:</label>
+    <input type="text" formControlName="name" required>
+    <br><br><br>
+    <label>E-mail:</label>
+    <input type="email" formControlName="email" required>
+    <br><br><br>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+    <br><br><br>
+</form>
+
+
+<p>Name: {{form.controls['name'].value}}</p>
+<p>E-mail: {{form.controls['email'].value}}</p>
+<p>Form status: {{form.status}}</p>

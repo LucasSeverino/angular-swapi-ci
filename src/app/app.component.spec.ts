@@ -1,35 +1,46 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
+import { OnOffComponent } from './on-off/on-off.component';
+import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { UnitTestOneComponent } from './unit-test-one/unit-test-one.component';
+import { ModelDrivenFormComponent } from './model-driven-form/model-driven-form.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        
       ],
-    }).compileComponents();
-  }));
+      providers: [AppService]
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'angular-swapi-ci'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-swapi-ci');
+  it(`should have 'add()' function`, () => {
+    expect(component.add).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-swapi-ci app is running!');
+  it(`should have add(param1, param2) function with params '2' and '3' returning the sum: 5`, () => {
+    expect(component.add(2, 3)).toBe(5);
   });
 });
