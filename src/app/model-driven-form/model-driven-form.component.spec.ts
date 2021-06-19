@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModelDrivenFormComponent } from './model-driven-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
